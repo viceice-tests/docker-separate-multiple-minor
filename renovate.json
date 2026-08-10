@@ -28,7 +28,8 @@
       "matchDepNames": ["ghcr.io/techarohq/anubis"],
       "separateMultipleMajor": true,
       "separateMultipleMinor": true,
-      "separateMinorPatch": true
+      "separateMinorPatch": true,
+      "versioning": "semver"
     },
     {
       "description": "don't not propose first anubis major or minor release, so patch must be grater than zero",
