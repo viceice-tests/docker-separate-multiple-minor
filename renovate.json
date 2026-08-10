@@ -27,7 +27,8 @@
       "description": "Separate multiple anubis major and minor updates",
       "matchDepNames": ["ghcr.io/techarohq/anubis"],
       "separateMultipleMajor": true,
-      "separateMultipleMinor": true
+      "separateMultipleMinor": true,
+      "separateMinorPatch": true
     },
     {
       "description": "don't not propose first anubis major or minor release, so patch must be grater than zero",
