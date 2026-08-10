@@ -1,0 +1,49 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices"],
+  "flux": {
+    "managerFilePatterns": ["/^flux/.+\\.ya?ml$/"]
+  },
+  "kubernetes": {
+    "managerFilePatterns": ["/^flux/.+\\.ya?ml$/"]
+  },
+  "packageRules": [
+    {
+      "description": "Group anubis image by folder (apps)",
+      "matchPackageNames": ["**{,/}anubis"],
+      "matchFileNames": ["flux/apps/forgejo-*/**", "flux/apps/forgefriends/**"],
+      "additionalBranchPrefix": "{{parentDir}}-",
+      "commitMessageTopic": "{{depName}} Docker tag ({{parentDir}})"
+    },
+    {
+      "description": "Group anubis image by folder (apps)",
+      "matchPackageNames": ["**{,/}anubis"],
+      "matchFileNames": ["flux/apps/charts/next-instance/**"],
+      "additionalBranchPrefix": "next-instances-",
+      "commitMessageTopic": "{{depName}} Docker tag (next-instances)"
+    },
+    {
+      "description": "Separate multiple anubis major and minor updates",
+      "matchDepNames": ["ghcr.io/techarohq/anubis"],
+      "separateMultipleMajor": true,
+      "separateMultipleMinor": true
+    },
+    {
+      "description": "don't not propose first anubis major or minor release, so patch must be grater than zero",
+      "matchPackageNames": ["ghcr.io/techarohq/anubis"],
+      "allowedVersions": "!/\\.0$/"
+    },
+    {
+      "description": "bump chart version on renovate updates",
+      "matchFileNames": ["**/charts/*/values.yaml"],
+      "bumpVersions": [
+        {
+          "name": "Chart",
+          "filePatterns": ["{{packageFileDir}}/Chart.yaml"],
+          "matchStrings": ["version:\\s(?<version>\\d+\\.\\d+\\.\\d+)"],
+          "bumpType": "{{#if isMajor}}major{{else}}{{#if isMinor}}minor{{else}}patch{{/if}}{{/if}}"
+        }
+      ]
+    }
+  ]
+}

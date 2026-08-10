@@ -1,0 +1,4 @@
+apiVersion: v2
+name: next-instance
+version: 3.1.4 # need increment on any manifest change
+description: v*.next instance

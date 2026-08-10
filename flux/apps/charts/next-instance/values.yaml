@@ -1,0 +1,7 @@
+
+# allow configure anubis per chart consumer and also allow renovate to upgrade
+anubis:
+  image:
+    repository: ghcr.io/techarohq/anubis
+    tag: v1.23.1
+
