@@ -3,4 +3,4 @@ kind: Kustomization
 
 images:
   - name: ghcr.io/techarohq/anubis
-    newTag: v1.23.1
+    newTag: v1.28.1@sha256:1744c03a918160a28b0d2e8c1656de6585f4071b30b4c3b0d51d02282c9b7c25
